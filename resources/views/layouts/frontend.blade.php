@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', 'Business Listings') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -67,7 +67,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('listings.create') }}" class="nav-link">Create new listing</a>
+                                <a href="{{ route('listing.create') }}" class="nav-link">Create new listing</a>
                             </li>
                         @endguest
                     </ul>
@@ -76,7 +76,7 @@
         </nav>
 
         <main class="py-4 container-fluid">
-            @include('inc/messages')
+            @include('components/messages')
             @yield('content')
         </main>
     </div>

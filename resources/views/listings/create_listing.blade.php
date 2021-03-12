@@ -1,7 +1,6 @@
-@extends('layouts.listing')
+@extends('layouts.frontend')
 
 @section('content')
-
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -12,47 +11,42 @@
                 </div>
 
                 <div class="card-body">
+                    <form action="{{ route('listing.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    
+                    <div class="form-group">
+                        <label for="company">Company name</label>
+                        <input class="form-control" type="text" name="company" id="company" required>
+                    </div>
 
-                    {!! Form::open(['action'=>'ListingsController@store', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input class="form-control" type="text" name="address" id="address" required>
+                    </div>
 
-                        <div class="form-group">
-                            {{Form::label('company', 'Company name')}}
-                            {{Form::text('company', '', ['class'=>'form-control', 'required'])}}
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input class="form-control" type="url" name="website" id="website" required>
+                    </div>
 
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('address', 'Address')}}
-                            {{Form::text('address', '', ['class'=>'form-control'])}}
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" required>
+                    </div>
 
-                        </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input class="form-control" type="tel" name="phone" id="phone" required>
+                    </div>
 
-                        <div class="form-group">
-                            {{Form::label('website', 'Website')}}
-                            {{Form::text('website', '', ['class'=>'form-control', 'required'])}}
+                    <div class="form-group">
+                        <label for="bio">Description</label>
+                        <textarea class="form-control" name="bio" id="bio" cols="30" rows="10" required></textarea>
+                    </div>
 
-                        </div>
+                    <input class="btn btn-success" type="submit" value="Send">
 
-                        <div class="form-group">
-                            {{Form::label('email', 'Email')}}
-                            {{Form::text('email', '', ['class'=>'form-control', 'required'])}}
-
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('phone', 'Phone')}}
-                            {{Form::text('phone', '', ['class'=>'form-control', 'required'])}}
-
-                        </div>
-
-                        <div class="form-group">
-                            {{Form::label('bio', 'Description')}}
-                            {{Form::textarea('bio', '', ['class'=>'form-control'])}}
-
-                        </div>
-
-                        {{Form::submit('Submit', ['class'=>'btn btn-success'])}}
-
-                    {!! Form::close() !!}
-
+                    </form>
 
                 </div>
             </div>

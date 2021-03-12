@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.listing')
 
 @section('content')
     <div class="">
@@ -9,7 +9,7 @@
 
                     <div class="card-body">
 
-                        @if(count($listings))
+
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                 <tr>
@@ -24,11 +24,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($listings as $listing)
+
                                     <tr>
-                                        <td><a href="{{ route('listings.show', $listing->id) }}" target="_blank" class="nav-link">{{$listing->name}}</a></td>
+                                        <td>{{$listing->name}}</td>
                                         <td>{{$listing->address}}</td>
-                                        <td>{{$listing->website}}</td>
+                                        <td><a href="{{$listing->website}}" target="_blank" class="nav-link">{{$listing->website}}</a></td>
                                         <td>{{$listing->email}}</td>
                                         <td>{{$listing->phone}}</td>
                                         <td>{{$listing->bio}}</td>
@@ -42,14 +42,10 @@
                                             {!! Form::close() !!}
                                         </td>
                                     </tr>
-                                @endforeach
 
                                 </tbody>
 
                             </table>
-                        @else
-                            <h5>There are currently no listings.</h5>
-                        @endif
 
                     </div>
                 </div>

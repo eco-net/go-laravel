@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Listing;
 
-class ListingsController extends Controller
+class ListingController extends Controller
 {
 
     public function __construct()
@@ -14,14 +14,22 @@ class ListingsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $listings = Listing::orderBy('created_at', 'desc')->get();
         return view('listings/listings_all')->with('listings', $listings);
     }
 
-
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('listings/create_listing');
@@ -51,7 +59,7 @@ class ListingsController extends Controller
 
 
 
-    public function show($id)
+    public function show($id, $slug = null)
     {
         $listing = Listing::find($id);
         return view('listings/listing')->with('listing', $listing);

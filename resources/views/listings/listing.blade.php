@@ -1,4 +1,4 @@
-@extends('layouts.listing')
+@extends('layouts.frontend')
 
 @section('content')
     <div class="">

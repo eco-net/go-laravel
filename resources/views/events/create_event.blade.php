@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.listing')
 
 @section('content')
 
@@ -7,49 +7,48 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h2>Edit listing</h2>
+                    <h2>Create a new listing</h2>
                     <a href="{{ route('home') }}" style="float: right" class="btn btn-sm btn-secondary my-3">back</a>
                 </div>
 
-
                 <div class="card-body">
 
-                    {!! Form::open(['action'=>['ListingsController@update', $listing->id], 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                    {!! Form::open(['action'=>'ListingsController@store', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
 
                         <div class="form-group">
                             {{Form::label('company', 'Company name')}}
-                            {{Form::text('company', $listing->name, ['class'=>'form-control', 'required'])}}
+                            {{Form::text('company', '', ['class'=>'form-control', 'required'])}}
 
                         </div>
                         <div class="form-group">
                             {{Form::label('address', 'Address')}}
-                            {{Form::text('address', $listing->address, ['class'=>'form-control'])}}
+                            {{Form::text('address', '', ['class'=>'form-control'])}}
 
                         </div>
 
                         <div class="form-group">
                             {{Form::label('website', 'Website')}}
-                            {{Form::text('website', $listing->website, ['class'=>'form-control', 'required'])}}
+                            {{Form::text('website', '', ['class'=>'form-control', 'required'])}}
 
                         </div>
 
                         <div class="form-group">
                             {{Form::label('email', 'Email')}}
-                            {{Form::text('email', $listing->email, ['class'=>'form-control', 'required'])}}
+                            {{Form::text('email', '', ['class'=>'form-control', 'required'])}}
 
                         </div>
                         <div class="form-group">
                             {{Form::label('phone', 'Phone')}}
-                            {{Form::text('phone', $listing->phone, ['class'=>'form-control', 'required'])}}
+                            {{Form::text('phone', '', ['class'=>'form-control', 'required'])}}
 
                         </div>
 
                         <div class="form-group">
                             {{Form::label('bio', 'Description')}}
-                            {{Form::textarea('bio', $listing->bio, ['class'=>'form-control'])}}
+                            {{Form::textarea('bio', '', ['class'=>'form-control'])}}
 
                         </div>
-                        {{Form::hidden('_method', 'PUT')}}
+
                         {{Form::submit('Submit', ['class'=>'btn btn-success'])}}
 
                     {!! Form::close() !!}
